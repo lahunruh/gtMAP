@@ -14,7 +14,7 @@ install_github("lahunruh/gtMAP")
 
 After installation the package can be loaded using
 
-'''
+'''R
 library(gtMAP)
 '''
 
