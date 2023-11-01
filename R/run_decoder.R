@@ -39,12 +39,12 @@ run_decoder <- function(Y, M, n, l, fittedpars = list(28.50433862,6.664942792,28
     M_truncated  <- (M_truncated[,inferred_pos_bin >0])
     Y <- Y[Y >0]
     if (sum(inferred_pos_bin) == 1) {
-      out_vec <- decoder_SA(gt_stan, length(M_truncated), M_truncated, Y, fittedpars, prev_est = prev, iter_in = 10,iter_out = 50, temp_red = 'quad_mult', sigma = sigma_est, out_val = out_val)
+      out_vec <- decoder_SA(gt_stan, length(M_truncated), M_truncated, Y, fittedpars, iter_in = 10,iter_out = 50, temp_red = 'quad_mult', sigma = sigma_est, out_val = out_val)
     } else {
       sum_out_vec <- vector('integer',sum(inferred_pos_bin))
       for (cc in 1:20) {
         gc()
-        out_vec <- decoder_SA(gt_stan, ncol(M_truncated), M_truncated, Y, fittedpars, prev_est = prev, iter_in = 10,iter_out = 100, temp_red = 'quad_mult', sigma = sigma_est, out_val = 'SE', ctbase = ctbase, ctmult=ctmult, ctmindetect = ctmindetect)
+        out_vec <- decoder_SA(gt_stan, ncol(M_truncated), M_truncated, Y, fittedpars, iter_in = 10,iter_out = 100, temp_red = 'quad_mult', sigma = sigma_est, out_val = 'SE', ctbase = ctbase, ctmult=ctmult, ctmindetect = ctmindetect)
         sum_out_vec <- sum_out_vec + out_vec
       }
     }
