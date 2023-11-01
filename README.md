@@ -23,8 +23,16 @@ To check that the installation was successful, run
 ```R
 gtMAP::run_test()
 ```
+which will create a group testing design as well as data and conduct the group testing and decoding. Depending on the complexity of the randomly generated test, this may take a few minutes. The output should look as follows
 
-which will create a group testing design as well as data and conduct the group testing and decoding. Depending on the complexity of the randomly generated test, this may take a few minutes.
+```
+Creating M
+Creating X
+Creating Y
+Running Decoder
+Finished Running Successfully!
+NULL
+```
 
 (THIS INSTALLATION TEST COULD BE MADE A BIT BETTER IN THE FUTURE)
 
