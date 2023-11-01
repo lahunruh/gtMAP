@@ -56,18 +56,6 @@ run_decoder <- function(Y, M, n, l, fittedpars = c(28.50433862,6.664942792,28.50
       nam[cc] <- sub('.', '', nam[cc])
     }
     inf_pos <- strtoi(nam)
-
-    X_rest <- X[(inferred_pos_bin >0)]
-    X_rest <- X_rest>0
-    for (idx in 1:sum(inferred_pos_bin)) {
-      if (X_rest[idx] == T) {
-        tp_cc[count]  <- sum_out_vec[idx]
-        count <- count + 1
-      } else {
-        fp_cc[count2] <- sum_out_vec[idx]
-        count2 <- count2 + 1
-      }
-    }
     positives <- inf_pos
   } else {
     positives <- list(which(inferred_pos_bin>0))
