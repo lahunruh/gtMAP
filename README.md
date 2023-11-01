@@ -21,7 +21,7 @@ library(gtMAP)
 To check that the installation was successful, run
 
 ```R
-run_test()
+gtMAP::run_test()
 ```
 
 which will create a group testing design as well as data and conduct the group testing and decoding. Depending on the complexity of the randomly generated test, this may take a few minutes.
