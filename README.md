@@ -1,2 +1,3 @@
 # gtMAP
-gtMAP - Simmulated Annealing Decoder for Group Testing
+
+This is the 

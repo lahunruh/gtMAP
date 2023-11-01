@@ -24,7 +24,7 @@
 #' @export
 #'
 
-run_decoder <- function(Y, M, n, l, fittedpars = list(28.50433862,6.664942792,28.50433862,6.664942792), sigma_est = 0.5, out_val = 'SE', sum_iterations = 20, sum_threshold = 10, ctbase = 50, ctmult = 1, ctmindetect = 25){
+run_decoder <- function(Y, M, n, l, fittedpars = c(28.50433862,6.664942792,28.50433862,6.664942792), sigma_est = 0.5, out_val = 'SE', sum_iterations = 20, sum_threshold = 10, ctbase = 50, ctmult = 1, ctmindetect = 25){
   gtstan <- ''
   fitpars <- c()
   fitpars$estimate <- fittedpars
