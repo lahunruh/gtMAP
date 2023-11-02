@@ -69,6 +69,42 @@ X <- create_positives_vector(n,p=p,output=X.output) # Creates a vector of viral 
 Y <- determine_Y(M,X,mode = Y.mode) # Creates the group testing results. Y.mode = 'Ct' returns Ct-values as test results. M is the design matrix supplied by the user.
 ```
 
+## In Vitro Data
+
+The plate per-well viral loads used for in vitro validation can be found in the data folder. The resulting PCR-test results (Ct-values) can also be found there. To extract the in vitro results the following script can be run
+(FINISH!!)
+```
+n <-  81
+l <-  3
+t <- sqrt(n) * (l + 1)
+M <- generate_STD_testing_protocol(n, l, sq = c(sqrt(n),0,1,2))
+
+p <- 1 # number of plate
+
+assignment_all <- read.csv(paste(assignment_file,sep=""))
+result_file <-  paste('plate',p,'_results_',plex,'.csv',sep='')
+p1_res <- read.csv(paste(dir,result_file,sep=''))
+
+start_indeces = c(1,1+t,97,97+t,193,193+t,289,289+t)
+for (idx in 1:len(start_indeces) {
+  idx_start = start_indeces[idx]
+  n_plex = ncol(p1_res)
+  if (n_plex > 5) {
+    n_plex = 5
+  }
+  for (i in 2:n_plex) {
+    p1_res[p1_res[,i] == "No Ct",i] = 0
+  }
+
+  names(p1_res)[1] <- 'well'
+  plate1 <- assignment_all
+
+  for (i in 2:n_plex) {
+    Y <- p1_res[match(plate1[idx_start:(idx_start+t-1),2],  p1_res$well), names(p1_res)[i]]
+  }
+}
+```
+
 ## Citation
 
 TO FOLLOW
