@@ -96,12 +96,12 @@ M <- generate_STD_testing_protocol(n, l, sq = c(sqrt(n),0,1,2)) # sq indicates s
 
 # Read in data
 assignment_all <- read.csv(paste(assignment_file,sep=""))
-p1_res <- read.csv(paste(dir,result_file,sep=""))
+p1_res <- read.csv(paste(result_file,sep=""))
 
 # Getting the results
 cc <- 1
 start_indeces = c(1,1+t,97,97+t,193,193+t,289,289+t) # assignment csv start indeces for the different designs on the same plate
-for (idx in 1:len(start_indeces) {
+for (idx in 1:length(start_indeces)) {
   idx_start = start_indeces[idx]
   n_plex = ncol(p1_res)
   if (n_plex > 5) {
