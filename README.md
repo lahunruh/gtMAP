@@ -83,19 +83,19 @@ p <- 1 # number of plate, between 1 and 6
 plex <- "MP" # or "SP" for singleplex results
 
 # Setting file paths
-assignment_file <- paste(dir,"Multiplex Well Assignment/assignment_all_w_replicates_3_and_4_multiplex.csv",sep="") # *3_and_4_* for plates 1-3 and *5_and_6* for plates 4-6
-result_file <-  paste('plate',p,'_results_',plex,'.csv',sep='')
+assignment_file <- paste(dir,plex,"_Well_Assignment/assignment_all_w_replicates_3_and_4_multiplex.csv",sep="") # *3_and_4_* for plates 1-3 and *5_and_6* for plates 4-6
+result_file <-  paste(dir,plex,"_Results/plate",p,"_results_",plex,".csv",sep="")
 
 
 # Setting up the design Matrix (to be used with Y later)
-n <-  81
-l <-  3
+n <- 81
+l <- 3
 t <- sqrt(n) * (l + 1)
 M <- generate_STD_testing_protocol(n, l, sq = c(sqrt(n),0,1,2)) # sq indicates specific matrix used (as for 3-disjunct there are multiple possibilities)
 
 # Read in data
 assignment_all <- read.csv(paste(assignment_file,sep=""))
-p1_res <- read.csv(paste(dir,result_file,sep=''))
+p1_res <- read.csv(paste(dir,result_file,sep=""))
 
 # Getting the results
 cc <- 1
