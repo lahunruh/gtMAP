@@ -103,9 +103,6 @@ start_indeces = c(1,1+t,97,97+t,193,193+t,289,289+t) # assignment csv start inde
 for (idx in 1:length(start_indeces)) {
   idx_start = start_indeces[idx]
   n_plex = ncol(p1_res)
-  if (n_plex > 5) {
-    n_plex = 5
-  }
   for (i in 2:n_plex) {
     p1_res[p1_res[,i] == "No Ct",i] = 0
   }
