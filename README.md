@@ -73,8 +73,8 @@ Y <- determine_Y(M,X,mode = Y.mode) # Creates the group testing results. Y.mode 
 
 The plate per-well viral loads used for in vitro validation can be found in the data folder. The resulting PCR-test results (Ct-values) can also be found there. To extract the in vitro results the following script can be run
 (FINISH!!)
-```R
 
+```R
 dir <- "C:/Users/<USERNAME>/Documents/gtMAP/data/" # Your filepath to gtMAP/data/ here
 RESULTS <- list() # List for storing test outcomes
 
