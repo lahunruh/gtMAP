@@ -58,7 +58,7 @@ gtMAP also allows the generation of a design matrix M via the function `generate
 - n: The number of samples
 - d: The desired disjunctness of the design matrix
 
-Please ensure that n is a square number. The resulting number of tests is equal to (d+1)*sqrt(n).
+Please ensure that n is a (prime) square. The resulting number of tests is equal to (d+1)*sqrt(n).
 
 ### Testing a design
 
