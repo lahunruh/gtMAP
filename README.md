@@ -101,16 +101,15 @@ p1_res <- read.csv(paste(result_file,sep=""))
 cc <- 1
 start_indeces = c(1,1+t,97,97+t,193,193+t,289,289+t) # assignment csv start indeces for the different designs on the same plate
 for (idx in 1:length(start_indeces)) {
-  idx_start = start_indeces[idx]
-  n_plex = ncol(p1_res)
-  names(p1_res)[1] <- 'well'
+  idx_start = start_indeces[idx] # select start idx of current design
+  n_plex = ncol(p1_res) # get number of diseases + 1
+  names(p1_res)[1] <- 'well' # name first column 'well' for unified access
 
-  for (i in 2:n_plex) {
-    p1_res[p1_res[,i] == "No Ct",i] = 0
-    Y <- matrix(NA,t,1)
-    Y <- p1_res[match(assignment_all[idx_start:(idx_start+t-1),2],  p1_res$well), names(p1_res)[i]]
-    Y <- matrix(as.numeric(Y))
-    RESULTS[[cc]] <- Y
+  for (i in 2:n_plex) { # starts from 2 as first column is well names
+    p1_res[p1_res[,i] == "No Ct",i] = 0 # set negative test results to 0
+    Y <- p1_res[match(assignment_all[idx_start:(idx_start+t-1),2],  p1_res$well), names(p1_res)[i]] # get the indeces of the assigned wells of the current design for the current disease and extract the Ct-values from the results
+    Y <- matrix(as.numeric(Y)) # Convert test results to numeric
+    RESULTS[[cc]] <- Y # Store result matrix to list
     cc <- cc + 1
   }
 }
