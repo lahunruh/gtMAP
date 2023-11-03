@@ -74,18 +74,32 @@ Y <- determine_Y(M,X,mode = Y.mode) # Creates the group testing results. Y.mode 
 The plate per-well viral loads used for in vitro validation can be found in the data folder. The resulting PCR-test results (Ct-values) can also be found there. To extract the in vitro results the following script can be run
 (FINISH!!)
 ```R
+
+dir <- "C:/Users/<USERNAME>/Documents/gtMAP/data/" # Your filepath to gtMAP/data/ here
+RESULTS <- list() # List for storing test outcomes
+
+# Setting plate and singleplex/multiplex
+p <- 1 # number of plate, between 1 and 6
+plex <- "MP" # or "SP" for singleplex results
+
+# Setting file paths
+assignment_file <- paste(dir,"Multiplex Well Assignment/assignment_all_w_replicates_3_and_4_multiplex.csv",sep="") # *3_and_4_* for plates 1-3 and *5_and_6* for plates 4-6
+result_file <-  paste('plate',p,'_results_',plex,'.csv',sep='')
+
+
+# Setting up the design Matrix (to be used with Y later)
 n <-  81
 l <-  3
 t <- sqrt(n) * (l + 1)
-M <- generate_STD_testing_protocol(n, l, sq = c(sqrt(n),0,1,2))
+M <- generate_STD_testing_protocol(n, l, sq = c(sqrt(n),0,1,2)) # sq indicates specific matrix used (as for 3-disjunct there are multiple possibilities)
 
-p <- 1 # number of plate
-
+# Read in data
 assignment_all <- read.csv(paste(assignment_file,sep=""))
-result_file <-  paste('plate',p,'_results_',plex,'.csv',sep='')
 p1_res <- read.csv(paste(dir,result_file,sep=''))
 
-start_indeces = c(1,1+t,97,97+t,193,193+t,289,289+t)
+# Getting the results
+cc <- 1
+start_indeces = c(1,1+t,97,97+t,193,193+t,289,289+t) # assignment csv start indeces for the different designs on the same plate
 for (idx in 1:len(start_indeces) {
   idx_start = start_indeces[idx]
   n_plex = ncol(p1_res)
@@ -100,7 +114,11 @@ for (idx in 1:len(start_indeces) {
   plate1 <- assignment_all
 
   for (i in 2:n_plex) {
+    Y <- matrix(NA,t,1)
     Y <- p1_res[match(plate1[idx_start:(idx_start+t-1),2],  p1_res$well), names(p1_res)[i]]
+    Y <- matrix(as.numeric(Y))
+    RESULTS[[cc]] <- Y
+    cc <- cc + 1
   }
 }
 ```
