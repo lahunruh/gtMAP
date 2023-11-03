@@ -84,7 +84,7 @@ p <- 1 # number of plate, between 1 and 6
 plex <- "MP" # or "SP" for singleplex results
 
 # Setting file paths
-assignment_file <- paste(dir,plex,"_Well_Assignment/assignment_all_w_replicates_3_and_4_multiplex.csv",sep="") # *3_and_4_* for plates 1-3 and *5_and_6* for plates 4-6
+assignment_file <- paste(dir,plex,"_Well_Assignment/assignment_all_w_replicates_3_and_4.csv",sep="") # *3_and_4_* for plates 1-3 and *5_and_6* for plates 4-6
 result_file <-  paste(dir,plex,"_Results/plate",p,"_results_",plex,".csv",sep="")
 
 
