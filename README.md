@@ -103,16 +103,12 @@ start_indeces = c(1,1+t,97,97+t,193,193+t,289,289+t) # assignment csv start inde
 for (idx in 1:length(start_indeces)) {
   idx_start = start_indeces[idx]
   n_plex = ncol(p1_res)
+  names(p1_res)[1] <- 'well'
+
   for (i in 2:n_plex) {
     p1_res[p1_res[,i] == "No Ct",i] = 0
-  }
-
-  names(p1_res)[1] <- 'well'
-  plate1 <- assignment_all
-
-  for (i in 2:n_plex) {
     Y <- matrix(NA,t,1)
-    Y <- p1_res[match(plate1[idx_start:(idx_start+t-1),2],  p1_res$well), names(p1_res)[i]]
+    Y <- p1_res[match(assignment_all[idx_start:(idx_start+t-1),2],  p1_res$well), names(p1_res)[i]]
     Y <- matrix(as.numeric(Y))
     RESULTS[[cc]] <- Y
     cc <- cc + 1
