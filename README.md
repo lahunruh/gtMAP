@@ -75,6 +75,7 @@ The plate per-well viral loads used for in vitro validation can be found in the 
 (FINISH!!)
 
 ```R
+library(gtMAP)
 dir <- "C:/Users/<USERNAME>/Documents/gtMAP/data/" # Your filepath to gtMAP/data/ here
 RESULTS <- list() # List for storing test outcomes
 
