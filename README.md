@@ -117,6 +117,9 @@ for (idx in 1:length(start_indeces)) {
 
 ## Citation
 
-The preprint version of the paper can be found at https://www.medrxiv.org/content/10.1101/2024.04.17.24305965v1. If using the package, please cite:
+The preprint version of the paper can be found at https://www.medrxiv.org/content/10.1101/2024.04.17.24305965v1. 
+
+If using the package, please cite:
+
 Unruh, L. A., Crone, M. A., Freemont, P. S., & Chindelevitch, L. (2024). A standardised, high-throughput approach to diagnostic group testing method validation. medRxiv, 2024-04. doi:10.1101/2024.04.17.24305965
 
